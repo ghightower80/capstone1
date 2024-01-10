@@ -1,0 +1,36 @@
+Capstone 1 Project Proposal
+
+Geoff Hightower
+Favorite food recipes
+
+The goal of this website is to provide the user with a clean interactive interface that provides them with recipe ideas and links to those recipes based on their provided favorite foods. The website should provide the user with ease of quickly finding recipes that adhere to their personal tastes.
+The targeted demographic for this would be anyone looking for inspiration using specific parameters. Busy people with limited time and homecooks would also benefit from this website. 
+For the data plan I am looking at a few API’s. Yummly seems to be the best fit. The data that I would like for it to contain would be the ingredients to the recipes. Links to recipes would also be desired, but not totally needed. 
+The simplified database schema for this project will have 3 tables . The first table will be for the users, this will store the users information. The second table will be the foods table, this will store the information about the favorite foods that the users input. The third table will be the recipes table, this will be for the recipes that are received from yummly.
+The issues that I foresee for this project would be similarity of recipes. Using popular foods will fetch many recipes that have a lot of similarities. API integration will also pose some obstacles as API keys and error handling will surely be issues.
+The sensitive information that the app will handle will be general user information. A login and password will need to be handled securely.
+The functionality for the app:
+User authentication: Allow users to register accounts. Allow users to log in and out securely.
+Food input: Allow users to input their favorite foods. Store entered food into a database.
+API integration: Connect to API and fetch recipes based on users favorite foods. Display all relevant information from recipes.
+User profile: Allow users to profile information as well as favorite foods.
+Recipe display: Show recipes in clean interface as well as links to original recipes on API.
+User feedback: Allow users to “like” recipes.
+User interactivity: Create an interactive user interface for positive experience. Use AJAX to update content without refreshing the page.
+Error handling: Give users messages in case of errors.
+Security measures: Protect user information. Use HTTPS to encrypt during transit. 
+
+User flow for the application:
+Homepage
+Login
+User profile
+Favorite foods
+API integration
+Recipe details
+Search and filtering
+User interaction (“Likes”)
+Error handling(if needed)
+Logout
+
+This project will be more than just CRUD as it will integrate an outside API. It will also implement user authentication and authorization as well as a friendly user interface. 
+Stretch goals for the project would be to continue to add user functionality. Additional dietary parameters could be added as well as email notification to new recipes.
