@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if recipe %}{{ recipe.title }}{% else %}Recipe Not Found{% endif %}</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 40px;
+            font-family: cursive;
+        }
+
+        h1,
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        ul,
+        ol {
+            text-align: left;
+            list-style-position: inside;
+            padding-left: 20px;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px;
+            margin-bottom: 100px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .recipe-details {
+            max-width: 500px;
+            margin: 0 auto;
+            border: 2px solid #ccc;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .ingredient-list,
+        .instruction-list {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Recipe Details section-->
+    <div class="recipe-details">
+        {% if recipe %}
+        <h1>{{ recipe.title }}</h1>
+        {% if recipe.image %}
+        <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+        {% endif %}
+        <p>Likes: {{ recipe.likes }}</p>
+        <form method="POST" action="{{ url_for('like_recipe', recipe_id=recipe.id) }}">
+            <input type="submit" value="Like">
+        </form>
+
+        <!-- Ingredients section -->
+        <h2 class="section-title">Ingredients</h2>
+        <ul class="ingredient-list">
+            {% for ingredient in recipe.extendedIngredients %}
+            <li>{{ ingredient.original }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Instructions Section -->
+        <h2 class="section-title">Instructions</h2>
+        <ol class="instruction-list">
+            {% for step in recipe.analyzedInstructions[0].steps %}
+            <li>{{ step.step }}</li>
+            {% endfor %}
+        </ol>
+        <a href="/?search_query={{ search_query }}">Back to search results</a>
+        {% else %}
+        <p>Recipe not found.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
