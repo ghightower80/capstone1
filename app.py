@@ -8,7 +8,7 @@ from flask import current_app
 
 
 # Create the flask app
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 app.config['SECRET_KEY'] = '42448154008950706555520308666437'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://geoffreyhightower:Vivian2023@localhost:5432/recipeApp'
 
@@ -130,4 +130,4 @@ def like_recipe(recipe_id):
 
 # Run the app in debug mode if executed directly
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 
