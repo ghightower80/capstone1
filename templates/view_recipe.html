@@ -2,13 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if recipe %}{{ recipe.title }}{% else %}Recipe Not Found{% endif %}</title>
     <style>
         body {
+            background-color: white;
             text-align: center;
+            color: black;
             margin: 40px;
+            background: linear-gradient(45deg, #a1ecd5 25%, transparent 25%, transparent 75%, #ffffff 75%, #ffffff), linear-gradient(-45deg, #ffffff 25%, transparent 25%, transparent 75%, #ffffff 75%, #ffffff);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            background-color: #f2f2f2;
             font-family: cursive;
         }
 
@@ -28,21 +32,31 @@
             display: block;
             margin: 0 auto;
             max-width: 200px;
-            margin-bottom: 100px;
+            border-radius: 50%;
+            overflow: hidden;
         }
 
         a {
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 0;
+            margin-left: 0;
             color: blue;
             text-decoration: underline;
         }
 
         .recipe-details {
+            background-color: rgb(249, 248, 224);
+            color: black;
             max-width: 500px;
             margin: 0 auto;
-            border: 2px solid #ccc;
+            border: 2px solid #0a0a0a;
             padding: 20px;
+        }
+
+        .recipe-card {
+            box-shadow: 0 20px 25px rgb(47, 46, 46);
+            transition: border 0.3s ease-in-out;
+
         }
 
         .section-title {
@@ -58,7 +72,6 @@
 </head>
 
 <body>
-    <!--Recipe Details section-->
     <div class="recipe-details">
         {% if recipe %}
         <h1>{{ recipe.title }}</h1>
@@ -71,12 +84,14 @@
         </form>
 
         <!-- Ingredients section -->
+        <div class="recipe-card"></div>
         <h2 class="section-title">Ingredients</h2>
         <ul class="ingredient-list">
             {% for ingredient in recipe.extendedIngredients %}
             <li>{{ ingredient.original }}</li>
             {% endfor %}
         </ul>
+
 
         <!-- Instructions Section -->
         <h2 class="section-title">Instructions</h2>
@@ -85,7 +100,6 @@
             <li>{{ step.step }}</li>
             {% endfor %}
         </ol>
-        <a href="/?search_query={{ search_query }}">Back to search results</a>
         {% else %}
         <p>Recipe not found.</p>
         {% endif %}
